@@ -11,14 +11,6 @@ import os
 # модуль работы с изображениями
 from PIL import Image
 import numpy as np
-# для конфигурации gpu
-from tensorflow.compat.v1 import ConfigProto
-from tensorflow.compat.v1 import InteractiveSession
-# настраиваем работу с GPU, для CPU эта часть не нужна
-config = ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.7
-config.gpu_options.allow_growth = True
-session = InteractiveSession(config=config)
 height = 224
 width = 224
 nh=224
@@ -55,8 +47,4 @@ def getresult(image_box):
     # декодируем ответ сети в один распознанный класс top=1 (можно больше классов)
     decode = decode_predictions(out_net, top=1)
     return decode
-    # заранее вызываем работу сети, так как работа с gpu требует времени
-    # из-за инициализации библиотек
-    # возможно, лучше убрать и закомментировать эти строки
-fcount, fimage = read_image_files(1,'./static')
-decode = getresult(fimage)
+ 
