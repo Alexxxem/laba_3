@@ -4,6 +4,7 @@ echo start client
 python3 client.py
 APP_CODE=$?
 sleep 5
-echo $APP_PID
+echo $APP_PID92
+kill -TERM $APP_PID
 echo app code $APP_CODE
 exit $APP_CODE
