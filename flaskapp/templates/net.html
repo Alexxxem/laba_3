@@ -4,23 +4,49 @@
 {% block title %}This is an page{% endblock %}
 <!-- блок body -->
 {% block content %}
-{{ wtf.quick_form(form, method='post',enctype="multipart/formdata", action="net") }}
+{{ wtf.quick_form(form, method='post',enctype="None", action="net") }}
 <!-- один из стандартных тэгов html - заголовок второго уровня -->
-<h2>grafik: </h2>
+<h2>Images: </h2>
 <!-- проверяем есть ли данные классификации -->
-{% if gr_name %}
-  <p>{{gr_name}}
-  <p><img src={{gr_name}}/>
-{% else %}
+<tr align="center">
+  <td width="800px><td width=300px">
+    {% if old_img %}
+    <p>Original image: {{old_img}}</p>
+    <p><img src = {{old_img}}/>
+      {% else %}
+    <p> There is no image yet </p>
+    {% endif %}
+  </td><td width=300px>
+  {% if image_name %}
+  <p><img src={{image_name}}></p>
+  {% else %}
   <p> There is no image yet </p>
-{% endif %}
-<h2>Image is here: </h2>
-<!-- отображаем загруженное изображение с закругленными углами -->
-<!-- если оно есть (после submit) -->
-{% if image_name %}
-  <p>{{image_name}}
-  <p><img src={{image_name}}/>
-{% else %}
-  <p> There is no image yet </p>
-{% endif %}
-{% endblock %}
+  {% endif %}</td></tr></table>
+<h2>Graphs: </h2>
+<table align="center">
+  <tr width=700px><td width=300px>
+    {%if vertgr%}
+    <p> Color average vert: {{vertgr}}
+    <p><img src={{vertgr}}></p>
+    {% else %}
+    <p> There is no image yet</p>
+    {% endif %}
+  </td><td width=300px>
+    {%if horizgr %}
+    <p> Colore average horiz: {{horizgr}}
+      <p>There is no image yet </p>
+    {% endif %}
+  </td>
+    <tr width=700px><td>
+  <br><br>
+  {%if gr_name %}
+  <p>Color map: {{gr_name}}
+    <p><img src={{gr_name}}/>
+  {% else %}
+  <p> There is no image yet</p>
+  {% endif %}
+  {% endblock %}
+</td>
+</tr>
+</table>
+
