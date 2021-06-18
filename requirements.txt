@@ -8,3 +8,4 @@ lxml==4.3.3
 seaborn==0.11.1
 scikit-image
 matplotlib==3.4.2
+seaborn==0.11.1
